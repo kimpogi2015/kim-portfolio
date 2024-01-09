@@ -4,6 +4,7 @@ import LoginPage from "@pages/login-page/LoginPage";
 import HomePage from "@pages/non-authenticated/HomePage";
 import { Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom";
 import { cmsRoutes } from "./routes-data";
+import LandingLayout from "@pages/layout/LandingLayout";
 
 export const userRole = {
   ADMIN: "ADMIN",
@@ -66,7 +67,9 @@ const Routers = () => {
         ))}
       </Route>
       <Route path="*" element={<Navigate to="/" />} />
-      <Route path="/" element={<HomePage />} />
+      <Route element={<LandingLayout />}>
+        <Route path="/" element={<HomePage />} />
+      </Route>
     </Routes>
   );
 };
